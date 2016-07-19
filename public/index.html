@@ -1,0 +1,61 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="styles/CssPrueba.css">
+
+  <title>Video Uploads</title>
+</head>
+<body>
+  <div class="container" ng-controller="AppCtrl">
+    <h2>Video Uploads</h2>
+    <hr class="colored">
+
+    <label for="firstNameEdit">First name:</label>
+    <input id="firstNameEdit" type="text" name="firstName" ng-model="videoForm.name" required /><br />
+    <label for="lastNameEdit">Last name:</label>
+    <input id="lastNameEdit" type="text" name="lastName" ng-model="videoForm.lastName" required /><br />
+    <label for="className">Class:</label>
+    <input id="className" type="text" name="className" ng-model="videoForm.class" required /><br />
+    <label for="university">School:</label>
+    <input id="university" type="text" name="university" ng-model="videoForm.university" required /><br />
+    <label for="video">Video:</label>
+    <input type="file" id="video" name="files[]" multiple ng-model="videoForm.video" >
+    <br />
+    <label for="videoTitle">Video Title:</label>
+    <input id="videoTitle" type="text" name="videoTitle" ng-model="videoForm.videoTitle" required /><br />
+    <label for="videoDescription">Video Description:</label>
+    <textarea id="videoDescription" type="text" name="videoDescription" ng-model="videoForm.videoDescription" required /></textarea>
+    <br />
+
+    <table >
+      <td><button ng-click="addVideo()">Add Video</button></td>
+      <td><button ng-click="update()">Update</button></td>
+    </table>
+    <br/>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Uploaded By</th>
+          <th>Video</th>
+          <th></th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr ng-repeat="videoForm in videoUploads">
+          <td>{{videoForm.name}}</td>
+          <td>{{videoForm.videoTitle}}</td>
+          <td><button  ng-click="remove(videoForm._id)">Remove</button></td>
+          <td><button  ng-click="edit(videoForm._id)">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+<script src="controllers/controller.js"></script>
+</body>
+</html>
